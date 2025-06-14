@@ -16,6 +16,7 @@ URL:		https://github.com/awslabs/aws-checksums
 BuildRequires:	aws-c-common-devel
 BuildRequires:	cmake >= 3.9
 BuildRequires:	gcc >= 5:3.2
+BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
