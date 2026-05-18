@@ -5,13 +5,13 @@
 Summary:	AWS Checksums library
 Summary(pl.UTF-8):	Biblioteka AWS Checksums
 Name:		aws-checksums
-Version:	0.2.7
+Version:	0.2.10
 Release:	1
 License:	Apache v2.0
 Group:		Libraries
 #Source0Download: https://github.com/awslabs/aws-checksums
 Source0:	https://github.com/awslabs/aws-checksums/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	ff17a2ef6ee81d1564de4184dd8e7ac2
+# Source0-md5:	c593471a1fe2ee548beeee06c1571265
 URL:		https://github.com/awslabs/aws-checksums
 BuildRequires:	aws-c-common-devel
 BuildRequires:	cmake >= 3.9
@@ -72,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %{_bindir}/checksum-profile
-%attr(755,root,root) %{_libdir}/libaws-checksums.so.1.0.0
+%{_libdir}/libaws-checksums.so.1.0.0
 
 %files devel
 %defattr(644,root,root,755)
