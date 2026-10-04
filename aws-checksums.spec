@@ -5,15 +5,15 @@
 Summary:	AWS Checksums library
 Summary(pl.UTF-8):	Biblioteka AWS Checksums
 Name:		aws-checksums
-Version:	0.2.10
+Version:	1.0.1
 Release:	1
 License:	Apache v2.0
 Group:		Libraries
 #Source0Download: https://github.com/awslabs/aws-checksums
 Source0:	https://github.com/awslabs/aws-checksums/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	c593471a1fe2ee548beeee06c1571265
+# Source0-md5:	baa58029b3854a4d23f7b0c63e192695
 URL:		https://github.com/awslabs/aws-checksums
-BuildRequires:	aws-c-common-devel
+BuildRequires:	aws-c-common-devel >= 1.0
 BuildRequires:	cmake >= 3.9
 BuildRequires:	gcc >= 5:3.2
 BuildRequires:	rpmbuild(macros) >= 1.605
@@ -34,7 +34,7 @@ Summary:	Header files for AWS Checksums library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki AWS Checksums
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	aws-c-common-devel
+Requires:	aws-c-common-devel >= 1.0
 
 %description devel
 Header files for AWS Checksums library.
@@ -48,7 +48,8 @@ Pliki nagłówkowe biblioteki AWS Checksums.
 %build
 install -d build
 cd build
-%cmake ..
+%cmake .. \
+	-DCMAKE_PREFIX_PATH=%{_prefix}
 
 %{__make}
 
@@ -70,9 +71,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.md
+%doc CHANGELOG.md README.md
 %attr(755,root,root) %{_bindir}/checksum-profile
-%{_libdir}/libaws-checksums.so.1.0.0
+%{_libdir}/libaws-checksums.so.*.*.*
+%ghost %{_libdir}/libaws-checksums.so.1.0
 
 %files devel
 %defattr(644,root,root,755)
